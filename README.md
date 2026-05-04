@@ -95,4 +95,30 @@
 
 ### **Раздел 3:** Проектирование PUSH-уведомлений (UML)
 
+```
+mermaid
+sequenceDiagram
+    participant App as Мобильное приложение
+    participant Order as Сервис Заказов
+    participant Kafka as Очередь (Kafka)
+    participant Notif as Сервис Уведомлений
+    participant Auth as Сервис Пользователей (БД)
+    participant FCM as Cloud (Google/Apple)
 
+    App->>Auth: 1. Передать Device_Token
+    Auth-->>App: 2. OK (Токен сохранен)
+
+    Note over Order: Заказ отменен юзером или системой
+    Order->>Kafka: 3. Событие "Отмена заказа"
+    Kafka->>Notif: 4. Задание на отправку PUSH
+
+    Notif->>Auth: 5. Запросить токен для User_ID
+    Auth-->>Notif: 6. Токен получен
+    Notif->>FCM: 7. POST /send (Token, Msg)
+    FCM-->>App: 8. Доставка PUSH на девайс
+    Notif->>Kafka: 9. Положить задачу в очередь повторов (Retry Topic)
+        Kafka->>Notif: 10. Забрать задачу через 5 минут
+        Notif->>Auth: 11. Запросить актуальный токен
+        Auth-->>Notif: 12. Токен получен
+        Notif->>FCM: 13. Повторный POST /send
+```
