@@ -95,8 +95,7 @@
 
 ### **Раздел 3:** Проектирование PUSH-уведомлений (UML)
 
-```
-mermaid
+```mermaid
 sequenceDiagram
     participant App as Мобильное приложение
     participant Order as Сервис Заказов
