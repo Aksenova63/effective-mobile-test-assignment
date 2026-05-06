@@ -63,32 +63,32 @@
 
 ```json
 {
-  "status": "success",
-  "data": {
-    "title": "Выберите магазин",
-    "shops": [
-      {
-        "id": 101,
-        "name": "METRO",
-        "logo_url": "https://petrushka.green",
-        "external_url": "https://metro-cc.ru",
-        "delivery_info": {
-          "type": "interval",
-          "text": "Сегодня, 21:00 – 23:00"
+    "partner_shops": [
+        {
+            "id": 1,
+            "name": "METRO",
+            "delivery_info": "Ближайшая доставка с 21 до 23",
+            "external_url": "https://metro.ru"
+        },
+        {
+            "id": 2,
+            "name": "Ашан",
+            "delivery_info": "Ближайшая доставка с 18 до 20",
+            "external_url": "https://auchan.ru"
+        },
+        {
+            "id": 3,
+            "name": "ВкусВилл",
+            "delivery_info": "Быстрая доставка от 20 до 60 минут",
+            "external_url": "https://vkusvill.ru"
+        },
+        {
+            "id": 4,
+            "name": "ВИКТОРИЯ",
+            "delivery_info": "Ближайшая доставка с 17 до 19",
+            "external_url": "https://victory.ru"
         }
-      },
-      {
-        "id": 103,
-        "name": "ВкусВилл",
-        "logo_url": "https://petrushka.green",
-        "external_url": "https://vkusvill.ru",
-        "delivery_info": {
-          "type": "express",
-          "text": "20 – 60 мин"
-        }
-      }
     ]
-  }
 }
 ```
 
